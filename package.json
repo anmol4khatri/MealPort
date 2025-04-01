@@ -1,0 +1,14 @@
+{
+  "name": "food-ordering-app",
+  "version": "1.0.0",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "anmol4khatri",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "parcel": "^2.14.4"
+  }
+}
