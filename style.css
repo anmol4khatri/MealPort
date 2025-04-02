@@ -1,0 +1,17 @@
+.logo-container > img{
+    width: 250px;
+    margin: 12px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid black;
+}
+.nav-container > ul{
+    display: flex;
+}
+.nav-container > ul > li{
+    margin: 12px;
+    font-size: 23px;
+    list-style: none;
+}
