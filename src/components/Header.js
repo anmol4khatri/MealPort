@@ -1,8 +1,10 @@
+import { LOGO_URL } from "../utils/constants";
+
 const Header = () => {
     return (
         <div className="header">
             <div className="logo-container">
-                <img src="https://www.cdnlogo.com/logos/l/95/lorem-lorem.svg" alt="logo" />
+                <img src={LOGO_URL} alt="logo" />
             </div>
             <div className="nav-container">
                 <ul>
