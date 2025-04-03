@@ -1,5 +1,3 @@
-import resList from "../utils/mockData";
-
 const RestaurantCard = (props) => {
     const {resData} = props;
     const {info, order} = resData;
