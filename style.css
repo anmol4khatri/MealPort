@@ -18,17 +18,25 @@
     list-style: none;
 }
 
+/*Card Cointainer*/
+.restaurant-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 /*Card*/
 .restaurant-card{
     border: 2px solid black;
     width: 350px;
     height: 350px;
     padding: 10px;
+    margin: 10px;
 }
 .food-img{
     width: 350px;
     height: 248px;
-
+    border-radius: 20px;
 }
 .name-rating{
     display: flex;
