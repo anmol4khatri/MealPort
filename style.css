@@ -39,6 +39,7 @@
     width: 350px;
     height: 248px;
     border-radius: 20px;
+    object-fit: cover;
 }
 .name-rating{
     display: flex;
