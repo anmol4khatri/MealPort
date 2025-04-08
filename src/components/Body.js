@@ -5,6 +5,7 @@ import ShimmerBody from "./ShimmerBody";
 const Body = () => {
 
     const [ListOfRestaurant, setListOfRestaurant] = useState([]);
+    const [SearchQuery, setSearchQuery] = useState([]);
     const [SearchText, setSearchText] = useState("");
 
     useEffect(() => {
@@ -17,7 +18,7 @@ const Body = () => {
         
         const restaurants = json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
         setListOfRestaurant(restaurants);
-        
+        setSearchQuery(restaurants);
     };
     
     if(ListOfRestaurant.length===0){
@@ -51,12 +52,12 @@ const Body = () => {
                 const searchedRestaurants = ListOfRestaurant.filter((restaurant) =>
                     restaurant.info.name.toLowerCase().includes(SearchText.toLowerCase())
                 );                  
-                setListOfRestaurant(searchedRestaurants);
+                setSearchQuery(searchedRestaurants);
             }}>Search</button>
           </div>
         </div>
         <div className="restaurant-container">
-          {ListOfRestaurant.map((restaurant) => (
+          {SearchQuery.map((restaurant) => (
             <RestaurantCard key={restaurant.info.id} resData={restaurant} />
           ))}
         </div>
