@@ -16,6 +16,10 @@
     font-size: 23px;
     list-style: none;
 }
+.login-btn{
+    width: 65px;
+    height: 40px;
+}
 
 /*Card Cointainer*/
 .restaurant-container{
