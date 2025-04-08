@@ -5,6 +5,7 @@ import ShimmerBody from "./ShimmerBody";
 const Body = () => {
 
     const [ListOfRestaurant, setListOfRestaurant] = useState([]);
+    const [SearchText, setSearchText] = useState("");
 
     useEffect(() => {
         fetchData();
@@ -25,24 +26,41 @@ const Body = () => {
         );
     };
 
-    return(
-        <div className="body">
-            <div className="filter">
-                <button className="filter-btn" onClick={() => {
-                    const filteredList = ListOfRestaurant.filter(
-                        (restaurant) => restaurant.info.avgRating >= 4.4
-                    );
-                    setListOfRestaurant(filteredList);
-                }}>
-                    Top Rated Restaurants
-                </button>
-            </div>
-            <div className="restaurant-container">
-                {ListOfRestaurant.map( (restaurant) => (
-                    <RestaurantCard key={restaurant.info.id} resData={restaurant}/>
-                ))}
-            </div>
+    return (
+      <div className="body">
+        <div className="filter">
+          <button
+            className="filter-btn"
+            onClick={() => {
+              const filteredList = ListOfRestaurant.filter(
+                (restaurant) => restaurant.info.avgRating >= 4.4
+              );
+              setListOfRestaurant(filteredList);
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+          <div className="search">
+            <input
+              type="text"
+              className="search-bar"
+              value={SearchText}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+            <button className="search-btn" onClick={() => {
+                const searchedRestaurants = ListOfRestaurant.filter((restaurant) =>
+                    restaurant.info.name.toLowerCase().includes(SearchText.toLowerCase())
+                );                  
+                setListOfRestaurant(searchedRestaurants);
+            }}>Search</button>
+          </div>
         </div>
+        <div className="restaurant-container">
+          {ListOfRestaurant.map((restaurant) => (
+            <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          ))}
+        </div>
+      </div>
     );
 };
 export default Body;
