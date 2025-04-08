@@ -3,65 +3,76 @@ import { useEffect, useState } from "react";
 import ShimmerBody from "./ShimmerBody";
 
 const Body = () => {
+  const [ListOfRestaurant, setListOfRestaurant] = useState([]);
+  const [SearchQuery, setSearchQuery] = useState([]);
+  const [SearchText, setSearchText] = useState("");
 
-    const [ListOfRestaurant, setListOfRestaurant] = useState([]);
-    const [SearchQuery, setSearchQuery] = useState([]);
-    const [SearchText, setSearchText] = useState("");
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.2246322&lng=81.594554&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await data.json();
 
-    const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.2246322&lng=81.594554&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-        const json = await data.json();
-        
-        const restaurants = json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
-        setListOfRestaurant(restaurants);
-        setSearchQuery(restaurants);
-    };
-    
-    if(ListOfRestaurant.length===0){
-        return(
-            <ShimmerBody/>
-        );
-    };
+    const restaurants =
+      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
+    setListOfRestaurant(restaurants);
+    setSearchQuery(restaurants);
+  };
 
-    return (
-      <div className="body">
-        <div className="filter">
+  if (ListOfRestaurant.length === 0) {
+    return <ShimmerBody />;
+  }
+
+  return (
+    <div className="body">
+      <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Restaurant Name"
+            className="search-bar"
+            value={SearchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
           <button
-            className="filter-btn"
+            className="search-btn"
             onClick={() => {
-              const filteredList = ListOfRestaurant.filter(
-                (restaurant) => restaurant.info.avgRating >= 4.4
+              const searchedRestaurants = ListOfRestaurant.filter(
+                (restaurant) =>
+                  restaurant.info.name
+                    .toLowerCase()
+                    .includes(SearchText.toLowerCase())
               );
-              setListOfRestaurant(filteredList);
+              setSearchQuery(searchedRestaurants);
             }}
           >
-            Top Rated Restaurants
+            Search
           </button>
-          <div className="search">
-            <input
-              type="text"
-              className="search-bar"
-              value={SearchText}
-              onChange={(e) => setSearchText(e.target.value)}
-            />
-            <button className="search-btn" onClick={() => {
-                const searchedRestaurants = ListOfRestaurant.filter((restaurant) =>
-                    restaurant.info.name.toLowerCase().includes(SearchText.toLowerCase())
-                );                  
-                setSearchQuery(searchedRestaurants);
-            }}>Search</button>
+          <div className="top-rated">
+            <button
+              className="filter-btn"
+              onClick={() => {
+                const filteredList = ListOfRestaurant.filter(
+                  (restaurant) => restaurant.info.avgRating >= 4.4
+                );
+                setSearchQuery(filteredList);
+              }}
+            >
+              Top Rated Restaurants
+            </button>
           </div>
         </div>
-        <div className="restaurant-container">
-          {SearchQuery.map((restaurant) => (
-            <RestaurantCard key={restaurant.info.id} resData={restaurant} />
-          ))}
-        </div>
       </div>
-    );
+      <div className="restaurant-container">
+        {SearchQuery.map((restaurant) => (
+          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+        ))}
+      </div>
+    </div>
+  );
 };
 export default Body;

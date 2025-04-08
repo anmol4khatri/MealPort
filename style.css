@@ -20,6 +20,29 @@
     width: 65px;
     height: 40px;
 }
+/* Search*/
+.search-bar{
+    width: 400px;
+    height: 40px;
+    font-size: larger;
+    margin: 10px;
+    border-radius: 15px;
+}
+.search-btn{
+    width: 80px;
+    height: 47px;
+    border-radius: 15px;
+    font-size: large;
+}
+
+/* Filter by top rated restaurant */
+.filter-btn{
+    width: 200px;
+    height: 30px;
+    font-size: medium;
+    border-radius: 40px;
+}
+
 
 /*Card Cointainer*/
 .restaurant-container{
