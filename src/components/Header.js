@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { LOGO_URL } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 
@@ -12,8 +13,9 @@ const Header = () => {
         </div>
         <div className="nav-container">
           <ul>
-            <li>Home</li>
-            <li>Contact</li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/About">About</Link></li>
+            <li><Link to="/Contact">Contact</Link></li>
             <li>Cart</li>
             <button
               className="login-btn"
