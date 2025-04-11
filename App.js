@@ -39,7 +39,12 @@ const appRouter = createBrowserRouter([
                 element: <RestaurantMenu/>
             }
         ],
-        errorElement: <Error/>
+        errorElement: (
+            <>
+                <Header/>
+                <Error/>
+            </>
+        )
     },
 ]);
 
