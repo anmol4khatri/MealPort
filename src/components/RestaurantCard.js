@@ -18,7 +18,6 @@ const RestaurantCard = (props) => {
                 <h4>{costForTwo}</h4>
             </div>
             <h4 className="delivery-time">🕓 {slaString}</h4>
-
         </div>
     );
 };
