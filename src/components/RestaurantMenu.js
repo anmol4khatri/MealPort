@@ -21,7 +21,6 @@ const RestaurantMenu = () => {
         
     const basicResInfo  = resMenu?.data?.cards[2]?.card?.card?.info;
     const menuHolder = resMenu?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
-    console.log(menuHolder); 
 
     return(
         <div>
