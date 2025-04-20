@@ -29,7 +29,7 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="filter bg-blue-400">
+      <div className="filter">
         <div className="search">
           <input
             type="text"
