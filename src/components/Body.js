@@ -29,17 +29,17 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="filter">
+      <div className="filter bg-blue-400">
         <div className="search">
           <input
             type="text"
             placeholder="Restaurant Name"
-            className="search-bar"
+            className="search-bar w-96 h-12 text-xl m-3 p-3 border-2 rounded-xl"
             value={SearchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
           <button
-            className="search-btn"
+            className="search-btn w-24 h-12 border-3 rounded-xl text-lg font-bold hover:cursor-pointer"
             onClick={() => {
               const searchedRestaurants = ListOfRestaurant.filter(
                 (restaurant) =>
@@ -54,7 +54,7 @@ const Body = () => {
           </button>
           <div className="top-rated">
             <button
-              className="filter-btn"
+              className="filter-btn w-52 h-10 border-2 rounded-xl text-lg font-bold hover:cursor-pointer"
               onClick={() => {
                 const filteredList = ListOfRestaurant.filter(
                   (restaurant) => restaurant.info.avgRating >= 4.4
@@ -67,7 +67,7 @@ const Body = () => {
           </div>
         </div>
       </div>
-      <div className="restaurant-container">
+      <div className="restaurant-container flex flex-wrap justify-center">
         {SearchQuery.map((restaurant) => (
             <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id} className="link-style">
                 <RestaurantCard resData={restaurant}/>
