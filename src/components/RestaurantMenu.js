@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
 import useResMenu from "../utils/useResMenu";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
 
@@ -9,7 +10,7 @@ const RestaurantMenu = () => {
     if(!resMenu) {return (<h5>Loading</h5>)};
         
     const basicResInfo  = resMenu?.data?.cards[2]?.card?.card?.info;
-    const menuHolder = resMenu?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+    const ItemCategories = resMenu?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter( c => c?.card?.card["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
 
     return(
         <div>
@@ -23,8 +24,8 @@ const RestaurantMenu = () => {
             <div className="menuHolder">
                 <h1>Menu</h1>
                 {
-                    menuHolder?.itemCards?.map((item) => (
-                        <p key={item?.card?.info?.id}>{item?.card?.info?.name} : ₹ {item?.card?.info?.price/100 || item?.card?.info?.defaultPrice/100}</p>
+                    ItemCategories.map( (category) => (
+                        <RestaurantCategory key={category?.card?.card?.categoryId} data={category?.card?.card}/>
                     ))
                 }
             </div>
