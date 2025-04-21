@@ -1,7 +1,6 @@
 import { Image_URL_PREFIX } from "../utils/constants"
 
 const ItemCards = ({ data }) => {
-    console.log(data);
     return (
         data.map((item) => (
             <div key={item?.card?.info?.id} className="flex justify-between border-b-2">
@@ -13,7 +12,7 @@ const ItemCards = ({ data }) => {
                             className="w-4"></img>
                     }</span>
                     <span className="text-xl font-bold">{item?.card?.info?.name}</span>
-                    <span className="font-lg font-bold">₹ {item?.card?.info?.price / 100}</span>
+                    <span className="font-lg font-bold">₹ {(item?.card?.info?.price ?? item?.card?.info?.defaultPrice) / 100}</span>
                     <span className="my-3">{item?.card?.info?.description}</span>
                 </div>
                 <div className="w-3/12">
