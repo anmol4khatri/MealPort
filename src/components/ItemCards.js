@@ -16,8 +16,16 @@ const ItemCards = ({ data }) => {
                     <span className="my-3">{item?.card?.info?.description}</span>
                 </div>
                 <div className="w-3/12 flex items-center">
-                    <img src={Image_URL_PREFIX + item?.card?.info?.imageId} alt="dishImg"
-                        className="rounded-2xl my-4" />
+                    <div className="relative">
+                        <img
+                            src={Image_URL_PREFIX + item?.card?.info?.imageId}
+                            alt="dishImg"
+                            className="rounded-2xl my-4"
+                        />
+                        <button className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black text-white px-4 py-2 rounded-2xl cursor-pointer">
+                            Add +
+                        </button>
+                    </div>
                 </div>
             </div>
         ))
