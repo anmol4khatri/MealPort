@@ -15,7 +15,7 @@ const ItemCards = ({ data }) => {
                     <span className="font-lg font-bold">₹ {(item?.card?.info?.price ?? item?.card?.info?.defaultPrice) / 100}</span>
                     <span className="my-3">{item?.card?.info?.description}</span>
                 </div>
-                <div className="w-3/12">
+                <div className="w-3/12 flex items-center">
                     <img src={Image_URL_PREFIX + item?.card?.info?.imageId} alt="dishImg"
                         className="rounded-2xl my-4" />
                 </div>
