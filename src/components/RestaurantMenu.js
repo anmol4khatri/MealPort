@@ -16,7 +16,7 @@ const RestaurantMenu = () => {
         <div>
             <div className="basicResInfo">
                 <h1 className="text-2xl font-extrabold w-6/12 mx-auto my-5 p-1">{basicResInfo?.name}</h1>
-                <div className="w-6/12 mx-auto p-5 rounded-3xl border-2 my-10">
+                <div className="w-6/12 mx-auto p-5 rounded-3xl border-2 my-10 shadow-[0_10px_10px_0_rgba(0,0,0,0.3)]">
                     <h4 className="text-lg font-bold my-1">{basicResInfo?.avgRating}★ ({basicResInfo?.totalRatingsString}) • {basicResInfo?.costForTwoMessage}</h4>
                     <h3 className="font-bold">{basicResInfo?.cuisines.join(", ")}</h3>
                     <h4 className="my-3">{basicResInfo?.locality} → You : {basicResInfo?.sla?.slaString}</h4>
