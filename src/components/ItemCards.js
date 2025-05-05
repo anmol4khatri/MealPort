@@ -1,6 +1,16 @@
+import { useDispatch } from "react-redux";
 import { Image_URL_PREFIX } from "../utils/constants"
+import { addItem } from "../utils/cartSlice";
 
 const ItemCards = ({ data }) => {
+
+    const dispatch = useDispatch();
+
+    const handleAddItem = () => {
+        //displatch an action
+        dispatch(addItem("test"));
+    };
+
     return (
         data.map((item) => (
             <div key={item?.card?.info?.id} className="flex justify-between border-b-2">
@@ -22,7 +32,7 @@ const ItemCards = ({ data }) => {
                             alt="dishImg"
                             className="rounded-2xl my-4"
                         />
-                        <button className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black text-white px-4 py-2 rounded-2xl cursor-pointer">
+                        <button className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black text-white px-4 py-2 rounded-2xl cursor-pointer" onClick={handleAddItem}>
                             Add +
                         </button>
                     </div>
