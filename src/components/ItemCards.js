@@ -7,7 +7,6 @@ const ItemCards = ({ data }) => {
     const dispatch = useDispatch();
 
     const handleAddItem = (item) => {
-        //displatch an action
         dispatch(addItem(item));
     };
 
