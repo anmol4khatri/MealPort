@@ -22,7 +22,7 @@ const Header = () => {
             <li className="m-3 text-xl"><Link to="/">Home</Link></li>
             <li className="m-3 text-xl"><Link to="/About">About</Link></li>
             <li className="m-3 text-xl"><Link to="/Contact">Contact</Link></li>
-            <li className="m-3 text-xl">Cart ({cartItems.length})</li>
+            <li className="m-3 text-xl"><Link to="/Cart">Cart ({cartItems.length})</Link></li>
             <button
               className="login-btn w-16 h-10 text-xl mr-5 ml-1 mt-1 hover:cursor-pointer"
               onClick={() => {
