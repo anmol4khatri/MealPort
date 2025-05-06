@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import { clearCart } from "../utils/cartSlice";
 import { Image_URL_PREFIX } from "../utils/constants";
 
@@ -15,10 +14,15 @@ const Cart = () => {
     return(
         <div className="w-6/12 mx-auto my-5 p-1">
             <h1 className="text-3xl font-bold my-5 text-center">Your Cart</h1>
-            <div className="flex justify-center gap-x-8 my-8">
-                <button className=" bg-green-600 text-white px-2.5 py-2 rounded-2xl cursor-pointer">Place Order</button>
-                <button className=" bg-red-600 text-white px-2.5 py-2 rounded-2xl cursor-pointer" onClick={handleClearCart}>Clear Cart</button>
-            </div>
+            {cartItems.length == 0 && (
+                <p className="bg-black text-white rounded-4xl m-3 p-3 w-fit mx-auto text-lg">🍔 Oops! Your cart is empty. Time to add something delicious!</p>
+            )}
+            {cartItems.length > 0 && (
+                <div className="flex justify-center gap-x-8 my-8">
+                    <button className=" bg-green-600 text-white px-2.5 py-2 rounded-2xl cursor-pointer">Place Order</button>
+                    <button className=" bg-red-600 text-white px-2.5 py-2 rounded-2xl cursor-pointer" onClick={handleClearCart}>Clear Cart</button>
+                </div>
+            )}
             {cartItems.map((item) => (
                 <div key={item?.card?.info?.id} className="flex justify-between border-b-2">
                     <div className="w-9/12 m-1 flex flex-col my-4">
