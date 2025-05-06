@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart } from "../utils/cartSlice";
+import { clearCart, removeItem } from "../utils/cartSlice";
 import { Image_URL_PREFIX } from "../utils/constants";
 
 const Cart = () => {
@@ -9,6 +9,9 @@ const Cart = () => {
     const dispatch = useDispatch();
     const handleClearCart = () => {
         dispatch(clearCart());
+    };
+    const handleRemoveItem = (item) => {
+        dispatch(removeItem(item.card.info.id))
     };
 
     return(
@@ -43,7 +46,7 @@ const Cart = () => {
                                 alt="dishImg"
                                 className="rounded-2xl my-4"
                             />
-                            <button className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black text-white px-2.5 py-2 rounded-2xl cursor-pointer">
+                            <button className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black text-white px-2.5 py-2 rounded-2xl cursor-pointer" onClick={() => handleRemoveItem(item)}>
                                 Remove
                             </button>
                         </div>
