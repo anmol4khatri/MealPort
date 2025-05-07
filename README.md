@@ -1,7 +1,7 @@
 
 ![Logo](https://res.cloudinary.com/deiwwcdgo/image/upload/v1746632973/Screenshot_2025-05-07_195111_j7z9jx.png)
 
-# 🍔 Food Ordering WebApp
+# 🍔 MealPort (A Food Ordering WebApp)
 
 A fully functional, component-driven Food Ordering Web Application built with **React**, showcasing modern frontend architecture, routing, state management with Redux, and seamless UI experiences.
 
